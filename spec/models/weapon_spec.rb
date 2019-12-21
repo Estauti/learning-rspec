@@ -55,4 +55,11 @@ RSpec.describe Weapon, type: :model do
 
     expect(weapon.current_power).to eq(current_power)
   end
+
+  it 'returns title correctly' do
+    weapon = build(:weapon)
+    title = "#{weapon.name} ##{weapon.level}"
+
+    expect(weapon.title).to eq(title)
+  end
 end
