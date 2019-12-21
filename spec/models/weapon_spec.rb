@@ -48,4 +48,11 @@ RSpec.describe Weapon, type: :model do
 
     expect(weapon).to be_invalid
   end
+
+  it 'returns current power correctly' do
+    weapon = build(:weapon)
+    current_power = weapon.power_base + ((weapon.level - 1)*weapon.power_step)
+
+    expect(weapon.current_power).to eq(current_power)
+  end
 end
