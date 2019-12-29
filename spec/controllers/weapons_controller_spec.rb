@@ -13,7 +13,7 @@ RSpec.describe WeaponsController, type: :controller do
       create_list(:weapon, num_weapons)
 
       get :index
-      response_body = JSON.parse(response.body)
+      response_body = json_body
 
       expect(response_body.length).to eq(num_weapons)
     end
@@ -50,7 +50,7 @@ RSpec.describe WeaponsController, type: :controller do
   end
 
   describe 'DELETE :destroy' do
-    let(:weapon) { create(:weapon) }
+    let!(:weapon) { create(:weapon) }
 
     it 'returns success' do
       delete :destroy, params: { id: weapon.id }
